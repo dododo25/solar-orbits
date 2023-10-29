@@ -17,6 +17,7 @@ import Titan from './Titan';
 import Triton from './Triton';
 import Uranus from './Uranus.js';
 import Venus from './Venus.js';
+import PlanetCard from './card/PlanetCard.js';
 
 function App() {
   return (
@@ -63,9 +64,12 @@ function App() {
           </Sun>
         </div>
       </div>
+      <div className='w-0'>
+        <PlanetCard />
+      </div>
       <div className='w-0 no-print'>
         <div className='vw-50 vh-100 d-flex justify-content-end align-items-end p-3 pe-none'>
-          <h6 className='text-white'>Sizes and distances are not to scale. Created by <a className='pe-auto' href='https://github.com/dododo25'>Dmytro Terekhov</a>, 2023.</h6>
+          <h6 className='text-white font-extralight'>Sizes and distances are not to scale. Created by <a className='pe-auto' href='https://github.com/dododo25'>Dmytro Terekhov</a>, 2023.</h6>
         </div>
       </div>
     </div>

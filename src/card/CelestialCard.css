@@ -1,0 +1,10 @@
+.celestial-card > div > div {
+    position: relative;
+    z-index: 9;
+    box-shadow: 1.2em 0px 0.8em 0em #212121;
+}
+
+.btn-close {
+    width: 2em;
+    height: 2em;
+}
