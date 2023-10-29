@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/solar-orbits/static/css/main.a9f61d43.css",
+    "main.js": "/solar-orbits/static/js/main.9754be70.js",
+    "static/js/787.fa0b8822.chunk.js": "/solar-orbits/static/js/787.fa0b8822.chunk.js",
+    "static/media/RobotoMono-ExtraLight.ttf": "/solar-orbits/static/media/RobotoMono-ExtraLight.4620604e700a4d69b5af.ttf",
+    "index.html": "/solar-orbits/index.html",
+    "main.a9f61d43.css.map": "/solar-orbits/static/css/main.a9f61d43.css.map",
+    "main.9754be70.js.map": "/solar-orbits/static/js/main.9754be70.js.map",
+    "787.fa0b8822.chunk.js.map": "/solar-orbits/static/js/787.fa0b8822.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a9f61d43.css",
+    "static/js/main.9754be70.js"
+  ]
+}
