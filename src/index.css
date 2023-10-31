@@ -42,10 +42,6 @@ code {
   height: 0;
 }
 
-.vw-50 {
-  width: 50vw;
-}
-
 .max-vh-100 {
   max-height: 100vh;
 }
@@ -54,4 +50,25 @@ code {
   .no-print {
      visibility: hidden;
   }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #101010;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #BDBDBD;
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #FAFAFA;
 }

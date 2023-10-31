@@ -5,7 +5,7 @@ import {OrbitBorderRadius, Year} from './Constants.js';
 
 const Mars = props => {
   return (
-    <Celestial radius={6} borderRadius={OrbitBorderRadius} distance={props.distance} duration={1.88 * Year} fill='#D84315'>
+    <Celestial radius={6} borderRadius={OrbitBorderRadius} distance={props.distance} duration={1.88 * Year} fill='#D84315' onClick={props.onClick}>
       {props.children}
     </Celestial>
   );

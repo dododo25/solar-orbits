@@ -1,7 +1,14 @@
-.celestial-card > div > div {
+.celestial-card {
     position: relative;
-    z-index: 9;
+    width: 35vw;
+    background-color: #101010;
+    border-right: 2px solid #BDBDBD;
     box-shadow: 1.2em 0px 0.8em 0em #212121;
+    overflow-x: hidden!important;
+}
+
+.celestial-card > div > div {
+    width: 35vw;
 }
 
 .btn-close {

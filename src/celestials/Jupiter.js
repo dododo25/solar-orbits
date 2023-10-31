@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './Celestial.css';
 
 import {Year, OrbitBorderRadius} from './Constants.js';
-import process from './ElementProcessor';
+import process from '../ElementProcessor';
 
 const radius = 30;
 const duration = 11.86 * Year;
@@ -26,7 +26,7 @@ const Jupiter = props => {
       <div className='w-0 d-flex justify-content-center align-items-center'>
         <div className='pe-none'>
           <svg className='d-block' width={(distance + OrbitBorderRadius) * 2} height={(distance + OrbitBorderRadius) * 2}>
-            <g fillRule='evenodd' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+            <g fillRule='evenodd' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={props.onClick}>
               <path className='content pe-auto'
                     d={`M 0 ${distance + OrbitBorderRadius} A ${distance + OrbitBorderRadius} ${distance + OrbitBorderRadius} 0 0 1 ${(distance + OrbitBorderRadius) * 2} ${distance + OrbitBorderRadius} A ${distance + OrbitBorderRadius} ${distance + OrbitBorderRadius} 0 0 1 0 ${distance + OrbitBorderRadius} z
                         M ${OrbitBorderRadius * 2} ${distance + OrbitBorderRadius} A ${distance - OrbitBorderRadius} ${distance - OrbitBorderRadius} 0 0 1 ${distance * 2} ${distance + OrbitBorderRadius} A ${distance - OrbitBorderRadius} ${distance - OrbitBorderRadius} 0 0 1 ${OrbitBorderRadius * 2} ${distance + OrbitBorderRadius} z`}

@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import './Celestial.css';
 
-import process from './ElementProcessor.js';
+import process from '../ElementProcessor.js';
 
 const Celestial = props => {
   const distance = props.distance;
@@ -23,7 +23,7 @@ const Celestial = props => {
       <div className='w-0 d-flex justify-content-center align-items-center'>
         <div className='pe-none'>
           <svg className='d-block' width={(distance + borderRadius) * 2} height={(distance + borderRadius) * 2}>
-            <g fillRule='evenodd' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+            <g fillRule='evenodd' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={props.onClick}>
               <path className='content pe-auto'
                     d={`M 0 ${distance + borderRadius} A ${distance + borderRadius} ${distance + borderRadius} 0 0 1 ${(distance + borderRadius) * 2} ${distance + borderRadius} A ${distance + borderRadius} ${distance + borderRadius} 0 0 1 0 ${distance + borderRadius} z
                         M ${borderRadius * 2} ${distance + borderRadius} A ${distance - borderRadius} ${distance - borderRadius} 0 0 1 ${distance * 2} ${distance + borderRadius} A ${distance - borderRadius} ${distance - borderRadius} 0 0 1 ${borderRadius * 2} ${distance + borderRadius} z`}
