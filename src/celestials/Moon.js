@@ -1,7 +1,7 @@
 import './Celestial.css';
 
 import Celestial from './Celestial.js';
-import {Month, MoonOrbitBorderRadius} from './Constants.js';
+import {Month, MoonOrbitBorderRadius} from '../Constants.js';
 
 const Moon = props => {
   return (

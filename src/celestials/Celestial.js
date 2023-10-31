@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import './Celestial.css';
 
-import process from '../ElementProcessor.js';
+import process from './ElementProcessor.js';
 
 const Celestial = props => {
   const distance = props.distance;

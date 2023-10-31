@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 import './Celestial.css';
 
-import {Year, OrbitBorderRadius} from './Constants.js';
-import process from '../ElementProcessor';
+import {Year, OrbitBorderRadius} from '../Constants.js';
+import process from './ElementProcessor';
 
 const radius = 26;
 const svgSize = 80;

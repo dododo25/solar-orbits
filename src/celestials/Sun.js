@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import './Celestial.css';
 
-import process from '../ElementProcessor';
+import process from './ElementProcessor';
 
 const Sun = props => {
   const radius = 80;

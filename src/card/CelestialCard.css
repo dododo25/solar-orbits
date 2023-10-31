@@ -1,17 +1,42 @@
 .celestial-card {
-    position: relative;
-    width: 35vw;
-    background-color: #101010;
-    border-right: 2px solid #BDBDBD;
-    box-shadow: 1.2em 0px 0.8em 0em #212121;
-    overflow-x: hidden!important;
+  position: relative;
+  width: 35vw;
+  background-color: #101010;
+  border-right: 2px solid #BDBDBD;
+  box-shadow: 1.2em 0px 0.8em 0em #212121;
+  overflow-x: hidden!important;
+  animation: card-show 0.3s ease-in 0s 1;
+}
+
+.celestial-card.hide {
+  transform: translateX(-35vw);
+  animation: card-hide 0.3s ease-in 0s 1;
 }
 
 .celestial-card > div > div {
-    width: 35vw;
+  width: 35vw;
 }
 
 .btn-close {
-    width: 2em;
-    height: 2em;
+  width: 2em;
+  height: 2em;
 }
+
+@keyframes card-show {
+  from {
+    transform: translateX(-35vw);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes card-hide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-35vw);
+  }
+}
+  

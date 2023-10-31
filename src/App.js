@@ -39,28 +39,17 @@ import EuropaCard   from './card/EuropaCard.js';
 import CallistoCard from './card/CallistoCard.js';
 
 function App() {
-  const [cardOpened, setCardOpened] = useState(false);
   const [cardElement, setCardElement] = useState(undefined);
 
-  let element = undefined;
-
   const prepareCard = e => {
-    setCardOpened(!(cardElement && cardElement.type.name === e.type.name));
-    setCardElement(!(cardElement && cardElement.type.name === e.type.name) ? e : undefined);
+    if (!(cardElement && cardElement.type.name === e.type.name)) {
+      setCardElement(e);
+    }
   };
 
   const closeCard = () => {
-    setCardOpened(false);
     setCardElement(undefined);
   };
-
-  if (cardOpened) {
-    element = (
-      <div className='w-0'>
-        {cardElement}
-      </div>
-    );
-  }
   
   return (
     <div className='App d-flex'>
@@ -95,7 +84,7 @@ function App() {
               <Callisto distance={72} onClick={() => prepareCard(<CallistoCard onClose={closeCard} />)} />
             </Jupiter>
             <Saturn distance={470} onClick={() => prepareCard(<SaturnCard onClick={prepareCard} onClose={closeCard} />)}>
-              <Titan distance={50} onClick={() => prepareCard(<TitanCard onClick={closeCard} />)} />
+              <Titan distance={50} onClick={() => prepareCard(<TitanCard onClose={closeCard} />)} />
             </Saturn>
             <Uranus distance={560} onClick={() => prepareCard(<UranusCard onClick={prepareCard} onClose={closeCard} />)} />
             <Neptune distance={630} onClick={() => prepareCard(<NeptuneCard onClick={prepareCard} onClose={closeCard} />)}>
@@ -104,7 +93,9 @@ function App() {
           </Sun>
         </div>
       </div>
-      {element}
+      <div className='w-0'>
+        {cardElement}
+      </div>
       <div className='w-0 no-print'>
         <div className='vw-100 vh-100 d-flex justify-content-end align-items-end p-3 pe-none'>
           <span className='text-white font-extralight'>Sizes and distances are not to scale. Created by <a className='pe-auto' href='https://github.com/dododo25'>Dmytro Terekhov</a>, 2023.</span>

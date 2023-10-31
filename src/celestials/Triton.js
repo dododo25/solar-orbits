@@ -1,7 +1,7 @@
 import './Celestial.css';
 
 import Celestial from './Celestial.js';
-import {Day, MoonOrbitBorderRadius} from './Constants.js';
+import {Day, MoonOrbitBorderRadius} from '../Constants.js';
 
 const Triton = props => {
   return (

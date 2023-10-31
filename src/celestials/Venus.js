@@ -1,7 +1,7 @@
 import './Celestial.css';
 
 import Celestial from './Celestial.js';
-import {OrbitBorderRadius, Year} from './Constants.js';
+import {OrbitBorderRadius, Year} from '../Constants.js';
 
 const Venus = props => {
   return (
