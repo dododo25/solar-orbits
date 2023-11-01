@@ -46,7 +46,7 @@ const PlanetCard = props => {
         <h5 className='text-white me-1'><b>Temperature: </b>{props.temperature.mean ? undefined : props.temperature}</h5>
         {temperatureElement}
       </div>
-      <h5 className='text-white'><a href={props.link}>Link</a> to the Wikipedia page</h5>
+      <h5 className='text-white'><a href={props.link}>Link</a> to the Wikipedia page.</h5>
     </CardTemplate>
   );
 };

@@ -38,7 +38,7 @@ import GanymedeCard from './card/GanymedeCard.js';
 import EuropaCard   from './card/EuropaCard.js';
 import CallistoCard from './card/CallistoCard.js';
 
-function App() {
+const App = props => {
   const [cardElement, setCardElement] = useState(undefined);
 
   const prepareCard = e => {
@@ -71,24 +71,24 @@ function App() {
       <div className='w-0'>
         <div className='vw-100 vh-100 d-flex justify-content-center align-items-center'>
           <Sun onClick={() => prepareCard(<SunCard onClose={closeCard}/>)}>
-            <Mercury distance={120} onClick={() => prepareCard(<MercuryCard onClick={prepareCard} onClose={closeCard}/>)} />
-            <Venus distance={150} onClick={() => prepareCard(<VenusCard onClick={prepareCard} onClose={closeCard}/>)} />
-            <Earth distance={190} onClick={() => prepareCard(<EarthCard onClick={prepareCard} onClose={closeCard}/>)}>
-              <Moon distance={20} onClick={() => prepareCard(<MoonCard onClose={closeCard} />)} />
+            <Mercury orbitRadius={120} shift={props.shifts.mercury} onClick={() => prepareCard(<MercuryCard onClick={prepareCard} onClose={closeCard}/>)} />
+            <Venus orbitRadius={150} shift={props.shifts.venus} onClick={() => prepareCard(<VenusCard onClick={prepareCard} onClose={closeCard}/>)} />
+            <Earth orbitRadius={190} shift={props.shifts.earth} onClick={() => prepareCard(<EarthCard onClick={prepareCard} onClose={closeCard}/>)}>
+              <Moon orbitRadius={20} shift={props.shifts.moon} onClick={() => prepareCard(<MoonCard onClose={closeCard} />)} />
             </Earth>
-            <Mars distance={230} onClick={() => prepareCard(<MarsCard onClick={prepareCard} onClose={closeCard} />)} />
-            <Jupiter distance={330} onClick={() => prepareCard(<JupiterCard onClick={prepareCard} onClose={closeCard} />)}>
-              <Io distance={42}       onClick={() => prepareCard(<IoCard onClose={closeCard} />)} />
-              <Europa distance={52}   onClick={() => prepareCard(<EuropaCard onClose={closeCard} />)} />
-              <Ganymede distance={62} onClick={() => prepareCard(<GanymedeCard onClose={closeCard} />)} />
-              <Callisto distance={72} onClick={() => prepareCard(<CallistoCard onClose={closeCard} />)} />
+            <Mars orbitRadius={230} shift={props.shifts.mars} onClick={() => prepareCard(<MarsCard onClick={prepareCard} onClose={closeCard} />)} />
+            <Jupiter orbitRadius={330} shift={props.shifts.jupiter} onClick={() => prepareCard(<JupiterCard onClick={prepareCard} onClose={closeCard} />)}>
+              <Io orbitRadius={42} shift={props.shifts.io} onClick={() => prepareCard(<IoCard onClose={closeCard} />)} />
+              <Europa orbitRadius={52} shift={props.shifts.europa} onClick={() => prepareCard(<EuropaCard onClose={closeCard} />)} />
+              <Ganymede orbitRadius={62} shift={props.shifts.ganymede} onClick={() => prepareCard(<GanymedeCard onClose={closeCard} />)} />
+              <Callisto orbitRadius={72} shift={props.shifts.callisto} onClick={() => prepareCard(<CallistoCard onClose={closeCard} />)} />
             </Jupiter>
-            <Saturn distance={470} onClick={() => prepareCard(<SaturnCard onClick={prepareCard} onClose={closeCard} />)}>
-              <Titan distance={50} onClick={() => prepareCard(<TitanCard onClose={closeCard} />)} />
+            <Saturn orbitRadius={470} shift={props.shifts.saturn} onClick={() => prepareCard(<SaturnCard onClick={prepareCard} onClose={closeCard} />)}>
+              <Titan orbitRadius={50} onClick={() => prepareCard(<TitanCard onClose={closeCard} />)} />
             </Saturn>
-            <Uranus distance={560} onClick={() => prepareCard(<UranusCard onClick={prepareCard} onClose={closeCard} />)} />
-            <Neptune distance={630} onClick={() => prepareCard(<NeptuneCard onClick={prepareCard} onClose={closeCard} />)}>
-              <Triton distance={32} onClick={() => prepareCard(<TritonCard onClose={closeCard} />)} />
+            <Uranus orbitRadius={560} shift={props.shifts.uranus} onClick={() => prepareCard(<UranusCard onClick={prepareCard} onClose={closeCard} />)} />
+            <Neptune orbitRadius={630} onClick={() => prepareCard(<NeptuneCard onClick={prepareCard} onClose={closeCard} />)}>
+              <Triton orbitRadius={32} shift={props.shifts.triton} onClick={() => prepareCard(<TritonCard onClose={closeCard} />)} />
             </Neptune>
           </Sun>
         </div>
@@ -98,11 +98,11 @@ function App() {
       </div>
       <div className='w-0 no-print'>
         <div className='vw-100 vh-100 d-flex justify-content-end align-items-end p-3 pe-none'>
-          <span className='text-white font-extralight'>Sizes and distances are not to scale. Created by <a className='pe-auto' href='https://github.com/dododo25'>Dmytro Terekhov</a>, 2023.</span>
+          <span className='footer text-white font-extralight'>Sizes and distances are not to scale. Created by <a className='pe-auto' href='https://github.com/dododo25'>Dmytro Terekhov</a>, 2023.</span>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default App;

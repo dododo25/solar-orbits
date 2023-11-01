@@ -20,7 +20,7 @@ const SunCard = props => {
           <h5><b>Center: </b>15,710,000 K</h5>
         </div>
       </div>
-      <h5><a href='https://en.wikipedia.org/wiki/Sun'>Link</a> to the Wikipedia page</h5>
+      <h5><a href='https://en.wikipedia.org/wiki/Sun'>Link</a> to the Wikipedia page.</h5>
     </CardTemplate>
   );
 };

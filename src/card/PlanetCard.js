@@ -22,7 +22,7 @@ const PlanetCard = props => {
   return (
     <CardTemplate onClose={props.onClose}>
       <div className='d-flex justify-content-center'>
-        <img src={props.imageSrc} alt={props.shortName} width={360} />
+        <img src={props.imageSrc} alt={props.shortName} />
       </div>
       <h1 className='d-flex justify-content-center mb-3'>{props.name}</h1>
       <h5><b>Radius: </b>{props.radius}</h5>
@@ -45,7 +45,7 @@ const PlanetCard = props => {
         {temperatureElement}
       </div>
       <h5><b>Largest lunar objects:</b>{moonsElement}</h5>
-      <h5><a href={props.link}>Link</a> to the Wikipedia page</h5>
+      <h5><a href={props.link}>Link</a> to the Wikipedia page.</h5>
     </CardTemplate>
   );
 };
