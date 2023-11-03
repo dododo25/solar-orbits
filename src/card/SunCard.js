@@ -5,7 +5,7 @@ const SunCard = props => {
   return (
     <CardTemplate onClose={props.onClose}>
       <div className='d-flex justify-content-center'>
-        <img src='https://nssdc.gsfc.nasa.gov/planetary/banner/sun.gif' alt='Sun' width={360} />
+        <img src='https://nssdc.gsfc.nasa.gov/planetary/banner/sun.gif' width='360' alt='Sun' />
       </div>
       <h1 className='d-flex justify-content-center mb-3'>Sun ☉</h1>
       <h5><b>Radius: </b>695,700 km, 109 Earths</h5>

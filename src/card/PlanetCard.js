@@ -22,7 +22,7 @@ const PlanetCard = props => {
   return (
     <CardTemplate onClose={props.onClose}>
       <div className='d-flex justify-content-center'>
-        <img src={props.imageSrc} alt={props.shortName} />
+        <img src={props.imageSrc} width='360' alt={props.shortName} />
       </div>
       <h1 className='d-flex justify-content-center mb-3'>{props.name}</h1>
       <h5><b>Radius: </b>{props.radius}</h5>
