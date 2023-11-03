@@ -7,7 +7,7 @@ import process from './ElementProcessor';
 const Sun = props => {
   const ref = useRef(null);
 
-  const radius = 80;
+  const radius = 72;
   const borderRadius = 4;
   const animationTime = 0.2;
   
@@ -48,14 +48,12 @@ const Sun = props => {
   };
 
   return (
-    <div className='d-flex align-items-center justify-content-center'>
+    <div className='d-flex'>
       {children}
       <div className='sun w-0 d-flex align-items-center justify-content-center'>
-        <div>
-          <svg className='d-block' width={(radius + borderRadius) * 2} height={(radius + borderRadius) * 2}>
-            <circle ref={ref} className='content' cx='50%' cy='50%' r={radius} fill='#FBC02D' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={props.onClick} />
-          </svg>
-        </div>
+        <svg className='d-block flex-shrink-0' width={(radius + borderRadius) * 2} height={(radius + borderRadius) * 2}>
+          <circle ref={ref} className='content' cx='50%' cy='50%' r={radius} fill='#FBC02D' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={props.onClick} />
+        </svg>
       </div>
     </div>
   );

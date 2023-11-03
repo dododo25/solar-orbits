@@ -54,8 +54,8 @@ const Celestial = props => {
   };
 
   return (
-    <div className='d-flex justify-content-center align-items-center'>
-      <div className='w-0 d-flex justify-content-center align-items-center'>
+    <div className='d-flex'>
+      <div className='w-0 d-flex justify-content-center'>
         <div className='pe-none'>
           <svg className='d-block' width={(orbitRadius + orbitSelectorBuffer) * 2} height={(orbitRadius + orbitSelectorBuffer) * 2}>
             <g fillRule='evenodd' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={props.onClick}>
@@ -68,15 +68,13 @@ const Celestial = props => {
           </svg>
         </div>
       </div>
-      <div className='w-0 d-flex align-items-center justify-content-center pe-none' style={{transform: `rotate(-${shift}deg)`}}>
+      <div className='w-0 d-flex justify-content-center pe-none' style={{transform: `rotate(-${shift}deg)`}}>
         <div className='d-flex justify-content-end align-items-center flex-shrink-0' style={{width: orbitRadius * 2, animation: animation}}>
-          <div className='w-0 d-flex align-items-center justify-content-center pe-auto'>
+          <div className='w-0 d-flex justify-content-center pe-auto'>
             {children}
           </div>
-          <div className='celestial w-0 d-flex align-items-center justify-content-center'>
-            <div>
-                {props.view}
-            </div>
+          <div className='celestial w-0 d-flex justify-content-center'>
+            {props.view}
           </div>
         </div>
       </div>
