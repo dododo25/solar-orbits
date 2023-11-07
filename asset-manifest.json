@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/solar-orbits/static/css/main.a9f61d43.css",
-    "main.js": "/solar-orbits/static/js/main.ef8f8b65.js",
+    "main.css": "/solar-orbits/static/css/main.46f44d43.css",
+    "main.js": "/solar-orbits/static/js/main.3edc116f.js",
     "static/js/787.fa0b8822.chunk.js": "/solar-orbits/static/js/787.fa0b8822.chunk.js",
     "static/media/RobotoMono-ExtraLight.ttf": "/solar-orbits/static/media/RobotoMono-ExtraLight.4620604e700a4d69b5af.ttf",
+    "static/media/RobotoMono-Light.ttf": "/solar-orbits/static/media/RobotoMono-Light.234f40fa88a810bad5e4.ttf",
     "index.html": "/solar-orbits/index.html",
-    "main.a9f61d43.css.map": "/solar-orbits/static/css/main.a9f61d43.css.map",
-    "main.ef8f8b65.js.map": "/solar-orbits/static/js/main.ef8f8b65.js.map",
+    "main.46f44d43.css.map": "/solar-orbits/static/css/main.46f44d43.css.map",
+    "main.3edc116f.js.map": "/solar-orbits/static/js/main.3edc116f.js.map",
     "787.fa0b8822.chunk.js.map": "/solar-orbits/static/js/787.fa0b8822.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a9f61d43.css",
-    "static/js/main.ef8f8b65.js"
+    "static/css/main.46f44d43.css",
+    "static/js/main.3edc116f.js"
   ]
 }
