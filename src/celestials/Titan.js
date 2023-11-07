@@ -13,11 +13,12 @@ const Titan = props => {
   );
 
   return (
-    <Celestial view={view} 
+    <Celestial id='Titan' 
+               view={view} 
                orbitRadius={props.orbitRadius} 
                orbitSelectorBuffer={BigOrbitSelectorBuffer} 
                shift={props.shift} 
-               duration={Day * 15.9454} 
+               duration={Day * 15.9454 / props.timeSpan} 
                children={props.children} 
                onClick={props.onClick} />
   );

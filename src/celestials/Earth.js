@@ -13,11 +13,12 @@ const Earth = props => {
   );
 
   return (
-    <Celestial view={view} 
+    <Celestial id='Earth' 
+               view={view} 
                orbitRadius={props.orbitRadius} 
                orbitSelectorBuffer={BigOrbitSelectorBuffer}
                shift={props.shift} 
-               duration={Year} 
+               duration={Year / props.timeSpan} 
                children={props.children} 
                onClick={props.onClick} />
   );

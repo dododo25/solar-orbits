@@ -13,11 +13,12 @@ const Io = props => {
   );
 
   return (
-    <Celestial view={view} 
+    <Celestial id='Io' 
+               view={view} 
                orbitRadius={props.orbitRadius} 
                orbitSelectorBuffer={OrbitSelectorBuffer} 
                shift={props.shift} 
-               duration={Day * 1.7627} 
+               duration={Day * 1.7627 / props.timeSpan} 
                children={props.children} 
                onClick={props.onClick} />
   );

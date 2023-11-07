@@ -13,11 +13,12 @@ const Callisto = props => {
   );
 
   return (
-    <Celestial view={view} 
+    <Celestial id='Callisto' 
+               view={view} 
                orbitRadius={props.orbitRadius} 
                orbitSelectorBuffer={OrbitSelectorBuffer} 
                shift={props.shift} 
-               duration={Day * 16.690} 
+               duration={Day * 16.690 / props.timeSpan} 
                children={props.children} 
                onClick={props.onClick} />
   );

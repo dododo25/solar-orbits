@@ -13,11 +13,12 @@ const Mercury = props => {
   );
 
   return (
-    <Celestial view={view} 
+    <Celestial id='Mercury' 
+               view={view} 
                orbitRadius={props.orbitRadius} 
                orbitSelectorBuffer={BigOrbitSelectorBuffer} 
                shift={props.shift} 
-               duration={0.241 * Year} 
+               duration={0.241 * Year / props.timeSpan} 
                children={props.children} 
                onClick={props.onClick} />
   );

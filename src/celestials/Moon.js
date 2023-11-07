@@ -13,11 +13,12 @@ const Moon = props => {
   );
 
   return (
-    <Celestial view={view} 
+    <Celestial id='Moon' 
+               view={view} 
                orbitRadius={props.orbitRadius} 
                orbitSelectorBuffer={OrbitSelectorBuffer} 
                shift={props.shift} 
-               duration={Month} 
+               duration={Month / props.timeSpan} 
                children={props.children} 
                onClick={props.onClick} />
   );

@@ -13,11 +13,12 @@ const Europa = props => {
   );
 
   return (
-    <Celestial view={view} 
+    <Celestial id='Europa' 
+               view={view} 
                orbitRadius={props.orbitRadius} 
                orbitSelectorBuffer={OrbitSelectorBuffer} 
                shift={props.shift} 
-               duration={Day * 3.5255} 
+               duration={Day * 3.5255 / props.timeSpan} 
                children={props.children} 
                onClick={props.onClick} />
   );

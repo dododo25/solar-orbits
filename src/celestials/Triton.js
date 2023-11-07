@@ -13,11 +13,12 @@ const Triton = props => {
   );
 
   return (
-    <Celestial view={view} 
+    <Celestial id='Triton' 
+               view={view} 
                orbitRadius={props.orbitRadius} 
                orbitSelectorBuffer={BigOrbitSelectorBuffer} 
                shift={props.shift} 
-               duration={Day * -5.8769} 
+               duration={Day * -5.8769 / props.timeSpan} 
                children={props.children} 
                onClick={props.onClick} />
   );

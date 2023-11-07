@@ -13,11 +13,12 @@ const Ganymede = props => {
   );
 
   return (
-    <Celestial view={view} 
+    <Celestial id='Ganymede' 
+               view={view} 
                orbitRadius={props.orbitRadius} 
                orbitSelectorBuffer={OrbitSelectorBuffer} 
                shift={props.shift} 
-               duration={Day * 7.1556} 
+               duration={Day * 7.1556 / props.timeSpan} 
                children={props.children} 
                onClick={props.onClick} />
   );
