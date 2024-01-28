@@ -43,6 +43,7 @@ import SpeedSlider from './SpeedSlider.js';
 import { Day, Hour, Month, Second } from './Constants.js';
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const defaultSize = 632;
 
 class App extends React.Component {
 
@@ -70,55 +71,57 @@ class App extends React.Component {
       this.setState({cardElement: undefined});
     };
 
+    const scale = Math.min(1.2, Math.max(0.5, Math.min(window.innerWidth, window.innerHeight) / (defaultSize * 2 + 60)));
+
     return (
-      <div className='App d-flex text-white'>
-        <div className='w-0'>
-          <div>
-            <svg width={1264} height={1264}>
-              <Background radius={632} />
-              <Sun distance={632} onClick={() => prepareCard(<SunCard onClose={closeCard}/>)}>
-                <Mercury orbitRadius={110} shift={this.props.shifts.mercury} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<MercuryCard onClick={prepareCard} onClose={closeCard}/>)} />
-                <Venus orbitRadius={140} shift={this.props.shifts.venus} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<VenusCard onClick={prepareCard} onClose={closeCard}/>)} />
-                <Earth orbitRadius={180} shift={this.props.shifts.earth} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<EarthCard onClick={prepareCard} onClose={closeCard}/>)}>
-                  <Moon orbitRadius={20} shift={this.props.shifts.moon} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<MoonCard onClose={closeCard} />)} />
-                </Earth>
-                <Mars orbitRadius={220} shift={this.props.shifts.mars} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<MarsCard onClick={prepareCard} onClose={closeCard} />)} />
-                <Jupiter orbitRadius={310} shift={this.props.shifts.jupiter} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<JupiterCard onClick={prepareCard} onClose={closeCard} />)}>
-                  <Io orbitRadius={40} shift={this.props.shifts.io} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<IoCard onClose={closeCard} />)} />
-                  <Europa orbitRadius={51} shift={this.props.shifts.europa} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<EuropaCard onClose={closeCard} />)} />
-                  <Ganymede orbitRadius={62} shift={this.props.shifts.ganymede} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<GanymedeCard onClose={closeCard} />)} />
-                  <Callisto orbitRadius={73} shift={this.props.shifts.callisto} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<CallistoCard onClose={closeCard} />)} />
-                </Jupiter>
-                <Saturn orbitRadius={450} shift={this.props.shifts.saturn} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<SaturnCard onClick={prepareCard} onClose={closeCard} />)}>
-                  <Titan orbitRadius={45} shift={this.props.shifts.titan} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<TitanCard onClose={closeCard} />)} />
-                </Saturn>
-                <Uranus orbitRadius={535} shift={this.props.shifts.uranus} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<UranusCard onClick={prepareCard} onClose={closeCard} />)} />
-                <Neptune orbitRadius={596} shift={this.props.shifts.neptune} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<NeptuneCard onClick={prepareCard} onClose={closeCard} />)}>
-                  <Triton orbitRadius={28} shift={this.props.shifts.triton} onClick={() => prepareCard(<TritonCard onClose={closeCard} />)} />
-                </Neptune>
-              </Sun>
-            </svg>
-          </div>
-        </div>
-        <div className='w-0'>
-          <div className='vh-100 d-flex flex-column justify-content-end p-3'>
+      <div id='App' className='App text-white'>
+        <div className='d-flex position-fixed h-100 pe-none user-select-none no-print'>
+          <div className='d-flex justify-content-end flex-column p-3'>
             <SpeedSlider onChange={this.changeSpeed.bind(this)} />
-            <span className='font-extralight pe-none' style={{width: 'max-content'}}>{`Current time: ${spaceTime.getDate() < 10 ? '0' : ''}${spaceTime.getDate()}-${months[spaceTime.getMonth()]}-${spaceTime.getFullYear()} ${spaceTime.getHours() < 10 ? '0' : ''}${spaceTime.getHours()}:${spaceTime.getMinutes() < 10 ? '0' : ''}${spaceTime.getMinutes()}:${spaceTime.getSeconds() < 10 ? '0' : ''}${spaceTime.getSeconds()}`}</span>
+            <span className='font-extralight' style={{width: 'max-content'}}>{`Current time: ${spaceTime.getDate() < 10 ? '0' : ''}${spaceTime.getDate()}-${months[spaceTime.getMonth()]}-${spaceTime.getFullYear()} ${spaceTime.getHours() < 10 ? '0' : ''}${spaceTime.getHours()}:${spaceTime.getMinutes() < 10 ? '0' : ''}${spaceTime.getMinutes()}:${spaceTime.getSeconds() < 10 ? '0' : ''}${spaceTime.getSeconds()}`}</span>
           </div>
         </div>
-        <div className='w-0'>
-          {cardElement}
-        </div>
-        <div className='w-0 no-print'>
-          <div className='vw-100 vh-100 d-flex justify-content-end align-items-end p-3 pe-none'>
+        <div className='d-flex justify-content-end position-fixed w-100 h-100 pe-none user-select-none no-print'>
+          <div className='d-flex align-items-end p-3'>
             <span className='font-extralight'>Sizes and distances are not to scale. Created by <a className='pe-auto' href='https://github.com/dododo25'>Dmytro Terekhov</a>, 2023.</span>
           </div>
+        </div>
+        <div className='position-absolute'>
+          {cardElement}
+        </div>
+        <div className='d-flex h-100 min-vh-100 justify-content-center align-items-center p-3'>
+          <svg width={defaultSize * 2 * scale} height={defaultSize * 2 * scale}>
+            <Background radius={defaultSize * scale} />
+            <Sun distance={defaultSize} scale={scale} onClick={() => prepareCard(<SunCard onClose={closeCard}/>)}>
+              <Mercury orbitRadius={110} shift={this.props.shifts.mercury} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<MercuryCard onClick={prepareCard} onClose={closeCard}/>)} />
+              <Venus orbitRadius={140} shift={this.props.shifts.venus} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<VenusCard onClick={prepareCard} onClose={closeCard}/>)} />
+              <Earth orbitRadius={180} shift={this.props.shifts.earth} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<EarthCard onClick={prepareCard} onClose={closeCard}/>)}>
+                <Moon orbitRadius={20} shift={this.props.shifts.moon} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<MoonCard onClose={closeCard} />)} />
+              </Earth>
+              <Mars orbitRadius={220} shift={this.props.shifts.mars} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<MarsCard onClick={prepareCard} onClose={closeCard} />)} />
+              <Jupiter orbitRadius={310} shift={this.props.shifts.jupiter} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<JupiterCard onClick={prepareCard} onClose={closeCard} />)}>
+                <Io orbitRadius={40} shift={this.props.shifts.io} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<IoCard onClose={closeCard} />)} />
+                <Europa orbitRadius={51} shift={this.props.shifts.europa} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<EuropaCard onClose={closeCard} />)} />
+                <Ganymede orbitRadius={62} shift={this.props.shifts.ganymede} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<GanymedeCard onClose={closeCard} />)} />
+                <Callisto orbitRadius={73} shift={this.props.shifts.callisto} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<CallistoCard onClose={closeCard} />)} />
+              </Jupiter>
+              <Saturn orbitRadius={450} shift={this.props.shifts.saturn} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<SaturnCard onClick={prepareCard} onClose={closeCard} />)}>
+                <Titan orbitRadius={45} shift={this.props.shifts.titan} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<TitanCard onClose={closeCard} />)} />
+              </Saturn>
+              <Uranus orbitRadius={535} shift={this.props.shifts.uranus} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<UranusCard onClick={prepareCard} onClose={closeCard} />)} />
+              <Neptune orbitRadius={596} shift={this.props.shifts.neptune} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<NeptuneCard onClick={prepareCard} onClose={closeCard} />)}>
+                <Triton orbitRadius={28} shift={this.props.shifts.triton} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<TritonCard onClose={closeCard} />)} />
+              </Neptune>
+            </Sun>
+          </svg>
         </div>
       </div>
     );
   }
 
   componentDidMount() {
+    window.scrollTo(0, (document.getElementById('App').getBoundingClientRect().height - window.innerHeight) / 2);
+
     setInterval(async () => {
       this.setState({actualTime: new Date(), spaceTime: new Date(this.state.spaceTime.getTime() + (Date.now() - this.state.actualTime.getTime()) * this.state.timeSpan)});
     }, 10);

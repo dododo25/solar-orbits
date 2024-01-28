@@ -11,7 +11,7 @@ class SpeedSlider extends React.Component {
 
   render() {
     return (
-      <div id='slider' className='font-extralight d-flex flex-column align-items-center' style={{width: 'max-content'}}>
+      <div id='slider' className='font-extralight d-flex flex-column align-items-center pe-auto' style={{width: 'max-content'}}>
         <div className='d-flex'>
           <div>
             <svg id='pointer' className='position-relative me-1' width='17.321' height='20' style={{top: this.state.yOffset}}>

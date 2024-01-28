@@ -24,7 +24,7 @@ class Celestial extends React.Component {
     return (
       <svg id={this.props.id} className='overflow-visible'>
         <g>
-          <circle className='orbit' cx='0%' cy='0%' r={orbitRadius} stroke='#FAFAFA' strokeWidth={this.state.orbitStrokeWidth} strokeDasharray='12' fill='transparent' />
+          <circle className='orbit pe-none' cx='0%' cy='0%' r={orbitRadius} stroke='#FAFAFA' strokeWidth={this.state.orbitStrokeWidth} strokeDasharray='12' fill='transparent' />
           <g className='orbit-buffer' fillRule='evenodd' onClick={this.props.onClick}>
             <path className='content pe-auto'
               d={`M ${-fullRadius} 0 a ${fullRadius} ${fullRadius} 0 0 1 ${fullRadius * 2} 0 a ${fullRadius} ${fullRadius} 0 0 1 ${-fullRadius * 2} 0 z
@@ -32,12 +32,14 @@ class Celestial extends React.Component {
               fill='transparent' />
           </g>
         </g>
-        <g transform={`rotate(-${this.state.shift})`}>
+        <g transform={`rotate(${this.state.shift * -1})`}>
           <g transform={`translate(${orbitRadius}, 0)`}>
             <g>
               {process(this.props.children)}
             </g>
-            {this.props.view}
+            <g className='content' onClick={this.props.onClick}>
+              {this.props.view}
+            </g>
           </g>
         </g>
       </svg>

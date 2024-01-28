@@ -21,12 +21,12 @@ const Sun = props => {
     
       if (timePassed >= animationTime * 1000) {
         clearInterval(timer);
-        ref.current.setAttribute('r', radius + borderRadius);
+        ref.current.setAttribute('r', (radius + borderRadius) * props.scale);
 
         return;
       }
     
-      ref.current.setAttribute('r', radius + borderRadius * timePassed / (animationTime * 1000));
+      ref.current.setAttribute('r', (radius + borderRadius * timePassed / (animationTime * 1000)) * props.scale);
     }, animationTime);
   };
 
@@ -38,21 +38,25 @@ const Sun = props => {
     
       if (timePassed >= animationTime * 1000) {
         clearInterval(timer);
-        ref.current.setAttribute('r', radius);
+        ref.current.setAttribute('r', radius * props.scale);
 
         return;
       }
     
-      ref.current.setAttribute('r', radius + borderRadius * (1 - timePassed / (animationTime * 1000)));
+      ref.current.setAttribute('r', (radius + borderRadius * (1 - timePassed / (animationTime * 1000))) * props.scale);
     }, animationTime);
   };
 
   return (
     <g>
-      <g transform={`translate(${props.distance}, ${props.distance})`}>
-        {children}
+      <g transform={`scale(${props.scale})`}>
+        <g transform={`translate(${props.distance}, ${props.distance})`}>
+          {children}
+        </g>
       </g>
-      <circle ref={ref} className='content' cx='50%' cy='50%' r={radius} fill='#FBC02D' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={props.onClick} />
+      <g transform={`translate(${props.distance * props.scale}, ${props.distance * props.scale})`}>
+        <circle ref={ref} className='content' r={radius * props.scale} fill='#FBC02D' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={props.onClick} />
+      </g>
     </g>
   );
 };
