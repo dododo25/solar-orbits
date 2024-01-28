@@ -7,9 +7,7 @@ const Neptune = props => {
   const radius = 16;
 
   const view = (
-    <svg className='d-block flex-shrink-0' width={radius * 2} height={radius * 2}>
-      <circle cx={radius} cy={radius} r={radius} fill='#3949AB' />
-    </svg>
+    <circle r={radius} fill='#3949AB' />
   );
 
   return (

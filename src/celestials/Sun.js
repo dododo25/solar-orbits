@@ -48,14 +48,12 @@ const Sun = props => {
   };
 
   return (
-    <div className='d-flex'>
-      {children}
-      <div className='sun w-0 d-flex align-items-center justify-content-center'>
-        <svg className='d-block flex-shrink-0' width={(radius + borderRadius) * 2} height={(radius + borderRadius) * 2}>
-          <circle ref={ref} className='content' cx='50%' cy='50%' r={radius} fill='#FBC02D' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={props.onClick} />
-        </svg>
-      </div>
-    </div>
+    <g>
+      <g transform={`translate(${props.distance}, ${props.distance})`}>
+        {children}
+      </g>
+      <circle ref={ref} className='content' cx='50%' cy='50%' r={radius} fill='#FBC02D' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={props.onClick} />
+    </g>
   );
 };
 

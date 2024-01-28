@@ -16,12 +16,12 @@ class Jupiter extends React.Component {
 
   render() {
     const view = (
-      <svg className='d-block flex-shrink-0' width={radius * 2} height={radius * 2}>
-        <g style={{transformBox: 'fill-box', transformOrigin: 'center', transform: `rotate(${this.state.shift}deg)`}}>
+      <g transform={`rotate(${this.state.shift})`}>
+        <g transform={`translate(${-radius}, ${-radius})`}>
           <circle cx={radius} cy={radius} r={radius} fill='#DEB887' />
           <ellipse cx='38' cy='38' rx='7' ry='4' fill='#8B0000' fillOpacity='0.6' />
         </g>
-      </svg>
+      </g>
     );
   
     return (

@@ -7,9 +7,7 @@ const Titan = props => {
   const radius = 4;
 
   const view = (
-    <svg className='d-block flex-shrink-0' width={radius * 2} height={radius * 2}>
-      <circle cx={radius} cy={radius} r={radius} fill='#FFF176' />
-    </svg>
+    <circle r={radius} fill='#FFF176' />
   );
 
   return (
