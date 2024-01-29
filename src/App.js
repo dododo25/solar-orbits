@@ -75,16 +75,12 @@ class App extends React.Component {
 
     return (
       <div id='App' className='App text-white'>
-        <div className='d-flex position-fixed h-100 pe-none user-select-none no-print'>
-          <div className='d-flex justify-content-end flex-column p-3'>
-            <SpeedSlider onChange={this.changeSpeed.bind(this)} />
-            <span className='font-extralight' style={{width: 'max-content'}}>{`Current time: ${spaceTime.getDate() < 10 ? '0' : ''}${spaceTime.getDate()}-${months[spaceTime.getMonth()]}-${spaceTime.getFullYear()} ${spaceTime.getHours() < 10 ? '0' : ''}${spaceTime.getHours()}:${spaceTime.getMinutes() < 10 ? '0' : ''}${spaceTime.getMinutes()}:${spaceTime.getSeconds() < 10 ? '0' : ''}${spaceTime.getSeconds()}`}</span>
-          </div>
+        <div className='d-flex flex-column justify-content-end position-fixed h-100 p-3 pe-none user-select-none no-print'>
+          <SpeedSlider onChange={this.changeSpeed.bind(this)} />
+          <span className='font-extralight' style={{width: 'max-content'}}>{`Current time: ${spaceTime.getDate() < 10 ? '0' : ''}${spaceTime.getDate()}-${months[spaceTime.getMonth()]}-${spaceTime.getFullYear()} ${spaceTime.getHours() < 10 ? '0' : ''}${spaceTime.getHours()}:${spaceTime.getMinutes() < 10 ? '0' : ''}${spaceTime.getMinutes()}:${spaceTime.getSeconds() < 10 ? '0' : ''}${spaceTime.getSeconds()}`}</span>
         </div>
-        <div className='d-flex justify-content-end position-fixed w-100 h-100 pe-none user-select-none no-print'>
-          <div className='d-flex align-items-end p-3'>
-            <span className='font-extralight'>Sizes and distances are not to scale. Created by <a className='pe-auto' href='https://github.com/dododo25'>Dmytro Terekhov</a>, 2023.</span>
-          </div>
+        <div className='d-flex justify-content-end align-items-end position-fixed w-100 h-100 p-3 pe-none user-select-none no-print'>
+          <span className='font-extralight'>Sizes and distances are not to scale. Created by <a className='pe-auto' href='https://github.com/dododo25'>Dmytro Terekhov</a>, 2023.</span>
         </div>
         <div className='position-absolute'>
           {cardElement}

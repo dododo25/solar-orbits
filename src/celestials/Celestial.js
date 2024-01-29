@@ -37,7 +37,7 @@ class Celestial extends React.Component {
             <g>
               {process(this.props.children)}
             </g>
-            <g className='content' onClick={this.props.onClick}>
+            <g className='content pe-none'>
               {this.props.view}
             </g>
           </g>
