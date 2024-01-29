@@ -21,32 +21,33 @@ class Celestial extends React.Component {
     const fullRadius = orbitRadius + orbitSelectorBuffer;
     const bufferPart = orbitRadius - orbitSelectorBuffer;
 
+    const onClick = () => {
+      window.location.href = `#${this.props.id.toLowerCase()}`;
+      this.props.onClick();
+    };
+
     return (
-      <div id={this.props.id} className='d-flex'>
-        <div className='w-0 d-flex justify-content-center'>
-          <div className='pe-none'>
-            <svg className='d-block' width={fullRadius * 2} height={fullRadius * 2}>
-              <g className='orbit-buffer' fillRule='evenodd' onClick={this.props.onClick}>
-                <path className='content pe-auto'
-                      d={`M 0 ${fullRadius} A ${fullRadius} ${fullRadius} 0 0 1 ${fullRadius * 2} ${fullRadius} A ${fullRadius} ${fullRadius} 0 0 1 0 ${fullRadius} z
-                          M ${orbitSelectorBuffer * 2} ${fullRadius} A ${bufferPart} ${bufferPart} 0 0 1 ${orbitRadius * 2} ${fullRadius} A ${bufferPart} ${bufferPart} 0 0 1 ${orbitSelectorBuffer * 2} ${fullRadius} z`}
-                      fill='transparent' />
-              </g>
-              <circle className='orbit' cx='50%' cy='50%' r={orbitRadius} stroke='#FAFAFA' strokeWidth={this.state.orbitStrokeWidth} strokeDasharray='12' fill='transparent' />
-            </svg>
-          </div>
-        </div>
-        <div className='w-0 d-flex justify-content-center pe-none' style={{transform: `rotate(-${this.state.shift}deg)`}}>
-          <div className='d-flex justify-content-end align-items-center flex-shrink-0' style={{width: orbitRadius * 2}}>
-            <div className='w-0 d-flex justify-content-center pe-auto'>
+      <svg id={this.props.id} className='overflow-visible'>
+        <g>
+          <circle className='orbit pe-none' cx='0%' cy='0%' r={orbitRadius} stroke='#FAFAFA' strokeWidth={this.state.orbitStrokeWidth} strokeDasharray='12' fill='transparent' />
+          <g className='orbit-buffer' fillRule='evenodd' onClick={onClick}>
+            <path className='content pe-auto'
+              d={`M ${-fullRadius} 0 a ${fullRadius} ${fullRadius} 0 0 1 ${fullRadius * 2} 0 a ${fullRadius} ${fullRadius} 0 0 1 ${-fullRadius * 2} 0 z
+                  M ${-bufferPart} 0 a ${bufferPart} ${bufferPart} 0 0 1 ${bufferPart * 2} 0 a ${bufferPart} ${bufferPart} 0 0 1 ${-bufferPart * 2} 0 z`}
+              fill='transparent' />
+          </g>
+        </g>
+        <g transform={`rotate(${this.state.shift * -1})`}>
+          <g transform={`translate(${orbitRadius}, 0)`}>
+            <g>
               {process(this.props.children)}
-            </div>
-            <div className='celestial w-0 d-flex justify-content-center'>
+            </g>
+            <g className='content pe-none'>
               {this.props.view}
-            </div>
-          </div>
-        </div>
-      </div>
+            </g>
+          </g>
+        </g>
+      </svg>
     );
   }
 

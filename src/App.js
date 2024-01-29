@@ -3,6 +3,7 @@ import React from 'react';
 import './App.css';
 
 import Background from './Background.js';
+import PickAnotherDevice from './PickAnotherDevice.js';
 
 import Callisto from './celestials/Callisto.js';
 import Earth    from './celestials/Earth.js';
@@ -43,6 +44,7 @@ import SpeedSlider from './SpeedSlider.js';
 import { Day, Hour, Month, Second } from './Constants.js';
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const defaultSize = 632;
 
 class App extends React.Component {
 
@@ -65,21 +67,33 @@ class App extends React.Component {
         this.setState({cardElement: e});
       }
     };
-  
+
     const closeCard = () => {
+      window.location.href= '#';
       this.setState({cardElement: undefined});
     };
-    
+
+    const scale = Math.min(1.2, Math.max(0.5, Math.min(window.innerWidth, window.innerHeight) / (defaultSize * 2 + 60)));
+
+    if (Math.min(window.innerWidth, window.innerHeight) < 768) {
+      return (<PickAnotherDevice />);
+    }
+
     return (
-      <div className='App d-flex text-white'>
-        <div className='w-0'>
-          <div className='vw-100 vh-100 d-flex justify-content-center align-items-center'>
-            <Background radius={632} />
-          </div>
+      <div id='App' className='App text-white'>
+        <div className='d-flex flex-column justify-content-end position-fixed h-100 p-3 pe-none user-select-none no-print'>
+          <SpeedSlider onChange={this.changeSpeed.bind(this)} />
+          <span className='font-extralight' style={{width: 'max-content'}}>{`Current time: ${spaceTime.getDate() < 10 ? '0' : ''}${spaceTime.getDate()}-${months[spaceTime.getMonth()]}-${spaceTime.getFullYear()} ${spaceTime.getHours() < 10 ? '0' : ''}${spaceTime.getHours()}:${spaceTime.getMinutes() < 10 ? '0' : ''}${spaceTime.getMinutes()}:${spaceTime.getSeconds() < 10 ? '0' : ''}${spaceTime.getSeconds()}`}</span>
         </div>
-        <div className='w-0'>
-          <div className='vw-100 vh-100 d-flex justify-content-center align-items-center'>
-            <Sun onClick={() => prepareCard(<SunCard onClose={closeCard}/>)}>
+        <div className='font-extralight d-flex flex-column justify-content-end align-items-end position-fixed w-100 h-100 p-3 pe-none user-select-none no-print'>
+          <span>Sizes and distances are not to scale.</span>
+          <span>Created by <a className='pe-auto' href='https://github.com/dododo25'>Dmytro Terekhov</a>, 2023.</span>
+        </div>
+        {cardElement}
+        <div className='d-flex h-100 min-vh-100 justify-content-center align-items-center'>
+          <svg width={defaultSize * scale * 2} height={defaultSize * scale * 2}>
+            <Background radius={defaultSize * scale} />
+            <Sun distance={defaultSize} scale={scale} onClick={() => prepareCard(<SunCard onClose={closeCard}/>)}>
               <Mercury orbitRadius={110} shift={this.props.shifts.mercury} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<MercuryCard onClick={prepareCard} onClose={closeCard}/>)} />
               <Venus orbitRadius={140} shift={this.props.shifts.venus} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<VenusCard onClick={prepareCard} onClose={closeCard}/>)} />
               <Earth orbitRadius={180} shift={this.props.shifts.earth} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<EarthCard onClick={prepareCard} onClose={closeCard}/>)}>
@@ -97,26 +111,10 @@ class App extends React.Component {
               </Saturn>
               <Uranus orbitRadius={535} shift={this.props.shifts.uranus} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<UranusCard onClick={prepareCard} onClose={closeCard} />)} />
               <Neptune orbitRadius={596} shift={this.props.shifts.neptune} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<NeptuneCard onClick={prepareCard} onClose={closeCard} />)}>
-                <Triton orbitRadius={28} shift={this.props.shifts.triton} onClick={() => prepareCard(<TritonCard onClose={closeCard} />)} />
+                <Triton orbitRadius={28} shift={this.props.shifts.triton} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<TritonCard onClose={closeCard} />)} />
               </Neptune>
             </Sun>
-          </div>
-        </div>
-        <div className='w-0'>
-        </div>
-        <div className='w-0'>
-          <div className='vh-100 d-flex flex-column justify-content-end p-3'>
-            <SpeedSlider onChange={this.changeSpeed.bind(this)} />
-            <span className='font-extralight pe-none' style={{width: 'max-content'}}>{`Current time: ${spaceTime.getDate() < 10 ? '0' : ''}${spaceTime.getDate()}-${months[spaceTime.getMonth()]}-${spaceTime.getFullYear()} ${spaceTime.getHours() < 10 ? '0' : ''}${spaceTime.getHours()}:${spaceTime.getMinutes() < 10 ? '0' : ''}${spaceTime.getMinutes()}:${spaceTime.getSeconds() < 10 ? '0' : ''}${spaceTime.getSeconds()}`}</span>
-          </div>
-        </div>
-        <div className='w-0'>
-          {cardElement}
-        </div>
-        <div className='w-0 no-print'>
-          <div className='vw-100 vh-100 d-flex justify-content-end align-items-end p-3 pe-none'>
-            <span className='font-extralight'>Sizes and distances are not to scale. Created by <a className='pe-auto' href='https://github.com/dododo25'>Dmytro Terekhov</a>, 2023.</span>
-          </div>
+          </svg>
         </div>
       </div>
     );
@@ -124,8 +122,18 @@ class App extends React.Component {
 
   componentDidMount() {
     setInterval(async () => {
+      if (Math.min(window.innerWidth, window.innerHeight) < 768) {
+        return;
+      }
+
       this.setState({actualTime: new Date(), spaceTime: new Date(this.state.spaceTime.getTime() + (Date.now() - this.state.actualTime.getTime()) * this.state.timeSpan)});
     }, 10);
+
+    window.addEventListener('resize', () => {
+      this.setState({'isLarge': Math.min(window.innerWidth, window.innerHeight) < 768});
+    });
+
+    this.setState({'isLarge': Math.min(window.innerWidth, window.innerHeight) < 768});
   }
 
   changeSpeed(v) {
@@ -140,7 +148,7 @@ class App extends React.Component {
     } else {
       this.setState({timeSpan: 0});
     }
-  } 
+  }
 }
 
 export default App;

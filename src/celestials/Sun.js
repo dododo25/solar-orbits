@@ -13,6 +13,11 @@ const Sun = props => {
   
   const children = process(props.children);
 
+  const onClick = () => {
+    window.location.href = '#sun';
+    props.onClick();
+  };
+
   const onMouseEnter = async () => {
     const start = Date.now();
 
@@ -21,12 +26,12 @@ const Sun = props => {
     
       if (timePassed >= animationTime * 1000) {
         clearInterval(timer);
-        ref.current.setAttribute('r', radius + borderRadius);
+        ref.current.setAttribute('r', (radius + borderRadius) * props.scale);
 
         return;
       }
     
-      ref.current.setAttribute('r', radius + borderRadius * timePassed / (animationTime * 1000));
+      ref.current.setAttribute('r', (radius + borderRadius * timePassed / (animationTime * 1000)) * props.scale);
     }, animationTime);
   };
 
@@ -38,24 +43,26 @@ const Sun = props => {
     
       if (timePassed >= animationTime * 1000) {
         clearInterval(timer);
-        ref.current.setAttribute('r', radius);
+        ref.current.setAttribute('r', radius * props.scale);
 
         return;
       }
     
-      ref.current.setAttribute('r', radius + borderRadius * (1 - timePassed / (animationTime * 1000)));
+      ref.current.setAttribute('r', (radius + borderRadius * (1 - timePassed / (animationTime * 1000))) * props.scale);
     }, animationTime);
   };
 
   return (
-    <div className='d-flex'>
-      {children}
-      <div className='sun w-0 d-flex align-items-center justify-content-center'>
-        <svg className='d-block flex-shrink-0' width={(radius + borderRadius) * 2} height={(radius + borderRadius) * 2}>
-          <circle ref={ref} className='content' cx='50%' cy='50%' r={radius} fill='#FBC02D' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={props.onClick} />
-        </svg>
-      </div>
-    </div>
+    <g>
+      <g transform={`scale(${props.scale})`}>
+        <g transform={`translate(${props.distance}, ${props.distance})`}>
+          {children}
+        </g>
+      </g>
+      <g transform={`translate(${props.distance * props.scale}, ${props.distance * props.scale})`}>
+        <circle ref={ref} className='content' r={radius * props.scale} fill='#FBC02D' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={onClick} />
+      </g>
+    </g>
   );
 };
 

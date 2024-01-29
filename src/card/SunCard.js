@@ -1,5 +1,5 @@
 import './CelestialCard.css';
-import CardTemplate from './CelestialCardTemplate';
+import CardTemplate from './CelestialCardTemplate.js';
 
 const SunCard = props => {
   return (

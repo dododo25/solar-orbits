@@ -12,7 +12,7 @@ const CardTemplate = props => {
   };
 
   return (
-    <div className={`celestial-card${hidden ? ' hide' : ''} vh-100 font-light d-flex`} onAnimationEnd={onAnimationEnd}>
+    <div className={`celestial-card${hidden ? ' hide' : ''} position-fixed h-100 font-light d-flex`} onAnimationEnd={onAnimationEnd}>
       <div className='w-0'>
         <div className='p-3'>
             {props.children}

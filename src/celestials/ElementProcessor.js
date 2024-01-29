@@ -14,11 +14,7 @@ const processInternal = children => {
 
     const newChild = {
       distance: child.props.distance,
-      element: (
-        <div key={i} className='w-0 d-flex justify-content-center align-items-center'>
-          {child}
-        </div>
-      )
+      element: child
     };
 
     let index = 0;

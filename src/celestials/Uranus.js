@@ -5,7 +5,7 @@ import './Celestial.css';
 import Celestial from './Celestial.js';
 import {BigOrbitSelectorBuffer, Year} from '../Constants.js';
 
-const svgSize = 66;
+const radius = 33;
 
 class Uranus extends React.Component {
 
@@ -16,8 +16,8 @@ class Uranus extends React.Component {
 
   render() {
     const view = (
-      <svg className='d-block flex-shrink-0' width={svgSize} height={svgSize}>
-        <g style={{transformBox: 'fill-box', transformOrigin: 'center', transform: `rotate(${this.props.shift}deg)`}}>
+      <g transform={`rotate(${this.state.shift})`}>
+        <g transform={`translate(${-radius}, ${-radius})`}>
           <circle cx='33' cy='33' r='18' fill='#66BB6A' />
           <g transform='rotate(9) translate(30 -16)'>
               <g transform='scale(0.2 1.3)'>
@@ -26,7 +26,7 @@ class Uranus extends React.Component {
           </g>
           <path d='M 31 50.8885 A 18 18 0 0 1 33 15 z' fill='#66BB6A' />
         </g>
-      </svg>
+      </g>
     );
   
     return (
@@ -47,7 +47,7 @@ class Uranus extends React.Component {
     }, 10);
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (this.props.timeSpan !== prevProps.timeSpan) {
       this.setState({duration: (84.01 * Year) / this.props.timeSpan});
     }

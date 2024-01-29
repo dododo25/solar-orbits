@@ -1,5 +1,5 @@
 import './CelestialCard.css';
-import CardTemplate from './CelestialCardTemplate';
+import CardTemplate from './CelestialCardTemplate.js';
 
 const PlanetCard = props => {
   let temperatureElement = undefined;

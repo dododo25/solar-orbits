@@ -7,9 +7,7 @@ const Mars = props => {
   const radius = 5;
 
   const view = (
-    <svg className='d-block flex-shrink-0' width={radius * 2} height={radius * 2}>
-      <circle cx={radius} cy={radius} r={radius} fill='#D84315' />
-    </svg>
+    <circle r={radius} fill='#D84315' />
   );
 
   return (

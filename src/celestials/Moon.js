@@ -7,9 +7,7 @@ const Moon = props => {
   const radius = 2;
 
   const view = (
-    <svg className='d-block flex-shrink-0' width={radius * 2} height={radius * 2}>
-      <circle cx={radius} cy={radius} r={radius} fill='#BDBDBD' />
-    </svg>
+    <circle r={radius} fill='#BDBDBD' />
   );
 
   return (

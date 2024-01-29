@@ -7,9 +7,7 @@ const Mercury = props => {
   const radius = 4;
 
   const view = (
-    <svg className='d-block flex-shrink-0' width={radius * 2} height={radius * 2}>
-      <circle cx={radius} cy={radius} r={radius} fill='#4E342E' />
-    </svg>
+    <circle r={radius} fill='#4E342E' />
   );
 
   return (
