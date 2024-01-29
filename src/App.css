@@ -9,30 +9,12 @@
 
 @media screen and (max-width: 1440px) {
   .App span {
-    font-size: 0.8em;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .App span {
-    font-size: 0.5em;
+    font-size: 1em;
   }
 }
 
 @media screen and (max-width: 768px) {
   .App span {
-    font-size: 0.28em;
-  }
-}
-
-@media screen and (max-width: 425px) {
-  .App span {
-    font-size: 0.24em;
-  }
-}
-
-@media screen and (max-width: 375px) {
-  .App span {
-    font-size: 0.2em;
+    font-size: 0.8em;
   }
 }

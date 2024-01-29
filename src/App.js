@@ -3,6 +3,7 @@ import React from 'react';
 import './App.css';
 
 import Background from './Background.js';
+import PickAnotherDevice from './PickAnotherDevice.js';
 
 import Callisto from './celestials/Callisto.js';
 import Earth    from './celestials/Earth.js';
@@ -74,14 +75,19 @@ class App extends React.Component {
 
     const scale = Math.min(1.2, Math.max(0.5, Math.min(window.innerWidth, window.innerHeight) / (defaultSize * 2 + 60)));
 
+    if (Math.min(window.innerWidth, window.innerHeight) < 768) {
+      return (<PickAnotherDevice />);
+    }
+
     return (
       <div id='App' className='App text-white'>
         <div className='d-flex flex-column justify-content-end position-fixed h-100 p-3 pe-none user-select-none no-print'>
           <SpeedSlider onChange={this.changeSpeed.bind(this)} />
           <span className='font-extralight' style={{width: 'max-content'}}>{`Current time: ${spaceTime.getDate() < 10 ? '0' : ''}${spaceTime.getDate()}-${months[spaceTime.getMonth()]}-${spaceTime.getFullYear()} ${spaceTime.getHours() < 10 ? '0' : ''}${spaceTime.getHours()}:${spaceTime.getMinutes() < 10 ? '0' : ''}${spaceTime.getMinutes()}:${spaceTime.getSeconds() < 10 ? '0' : ''}${spaceTime.getSeconds()}`}</span>
         </div>
-        <div className='d-flex justify-content-end align-items-end position-fixed w-100 h-100 p-3 pe-none user-select-none no-print'>
-          <span className='font-extralight'>Sizes and distances are not to scale. Created by <a className='pe-auto' href='https://github.com/dododo25'>Dmytro Terekhov</a>, 2023.</span>
+        <div className='font-extralight d-flex flex-column justify-content-end align-items-end position-fixed w-100 h-100 p-3 pe-none user-select-none no-print'>
+          <span>Sizes and distances are not to scale.</span>
+          <span>Created by <a className='pe-auto' href='https://github.com/dododo25'>Dmytro Terekhov</a>, 2023.</span>
         </div>
         {cardElement}
         <div className='d-flex h-100 min-vh-100 justify-content-center align-items-center'>
@@ -115,11 +121,19 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    window.scrollTo(0, (document.getElementById('App').getBoundingClientRect().height - window.innerHeight) / 2);
-
     setInterval(async () => {
+      if (Math.min(window.innerWidth, window.innerHeight) < 768) {
+        return;
+      }
+
       this.setState({actualTime: new Date(), spaceTime: new Date(this.state.spaceTime.getTime() + (Date.now() - this.state.actualTime.getTime()) * this.state.timeSpan)});
     }, 10);
+
+    window.addEventListener('resize', () => {
+      this.setState({'isLarge': Math.min(window.innerWidth, window.innerHeight) < 768});
+    });
+
+    this.setState({'isLarge': Math.min(window.innerWidth, window.innerHeight) < 768});
   }
 
   changeSpeed(v) {
@@ -134,7 +148,7 @@ class App extends React.Component {
     } else {
       this.setState({timeSpan: 0});
     }
-  } 
+  }
 }
 
 export default App;
