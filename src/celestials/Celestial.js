@@ -21,11 +21,16 @@ class Celestial extends React.Component {
     const fullRadius = orbitRadius + orbitSelectorBuffer;
     const bufferPart = orbitRadius - orbitSelectorBuffer;
 
+    const onClick = () => {
+      window.location.href = `#${this.props.id.toLowerCase()}`;
+      this.props.onClick();
+    };
+
     return (
       <svg id={this.props.id} className='overflow-visible'>
         <g>
           <circle className='orbit pe-none' cx='0%' cy='0%' r={orbitRadius} stroke='#FAFAFA' strokeWidth={this.state.orbitStrokeWidth} strokeDasharray='12' fill='transparent' />
-          <g className='orbit-buffer' fillRule='evenodd' onClick={this.props.onClick}>
+          <g className='orbit-buffer' fillRule='evenodd' onClick={onClick}>
             <path className='content pe-auto'
               d={`M ${-fullRadius} 0 a ${fullRadius} ${fullRadius} 0 0 1 ${fullRadius * 2} 0 a ${fullRadius} ${fullRadius} 0 0 1 ${-fullRadius * 2} 0 z
                   M ${-bufferPart} 0 a ${bufferPart} ${bufferPart} 0 0 1 ${bufferPart * 2} 0 a ${bufferPart} ${bufferPart} 0 0 1 ${-bufferPart * 2} 0 z`}

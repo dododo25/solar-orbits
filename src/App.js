@@ -68,6 +68,7 @@ class App extends React.Component {
     };
 
     const closeCard = () => {
+      window.location.href= '#';
       this.setState({cardElement: undefined});
     };
 
@@ -82,11 +83,9 @@ class App extends React.Component {
         <div className='d-flex justify-content-end align-items-end position-fixed w-100 h-100 p-3 pe-none user-select-none no-print'>
           <span className='font-extralight'>Sizes and distances are not to scale. Created by <a className='pe-auto' href='https://github.com/dododo25'>Dmytro Terekhov</a>, 2023.</span>
         </div>
-        <div className='position-absolute'>
-          {cardElement}
-        </div>
-        <div className='d-flex h-100 min-vh-100 justify-content-center align-items-center p-3'>
-          <svg width={defaultSize * 2 * scale} height={defaultSize * 2 * scale}>
+        {cardElement}
+        <div className='d-flex h-100 min-vh-100 justify-content-center align-items-center'>
+          <svg width={defaultSize * scale * 2} height={defaultSize * scale * 2}>
             <Background radius={defaultSize * scale} />
             <Sun distance={defaultSize} scale={scale} onClick={() => prepareCard(<SunCard onClose={closeCard}/>)}>
               <Mercury orbitRadius={110} shift={this.props.shifts.mercury} timeSpan={this.state.timeSpan} onClick={() => prepareCard(<MercuryCard onClick={prepareCard} onClose={closeCard}/>)} />

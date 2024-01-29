@@ -13,6 +13,11 @@ const Sun = props => {
   
   const children = process(props.children);
 
+  const onClick = () => {
+    window.location.href = '#sun';
+    props.onClick();
+  };
+
   const onMouseEnter = async () => {
     const start = Date.now();
 
@@ -55,7 +60,7 @@ const Sun = props => {
         </g>
       </g>
       <g transform={`translate(${props.distance * props.scale}, ${props.distance * props.scale})`}>
-        <circle ref={ref} className='content' r={radius * props.scale} fill='#FBC02D' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={props.onClick} />
+        <circle ref={ref} className='content' r={radius * props.scale} fill='#FBC02D' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} onClick={onClick} />
       </g>
     </g>
   );

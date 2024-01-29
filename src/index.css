@@ -63,8 +63,8 @@ code {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #BDBDBD;
-  border-radius: 4px;
+  background: #EEEEEE;
+  border-radius: 2px;
 }
 
 /* Handle on hover */

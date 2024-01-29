@@ -16,7 +16,7 @@ class Uranus extends React.Component {
 
   render() {
     const view = (
-      <g transform={`rotate(${this.props.shift})`}>
+      <g transform={`rotate(${this.state.shift})`}>
         <g transform={`translate(${-radius}, ${-radius})`}>
           <circle cx='33' cy='33' r='18' fill='#66BB6A' />
           <g transform='rotate(9) translate(30 -16)'>
@@ -47,7 +47,7 @@ class Uranus extends React.Component {
     }, 10);
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (this.props.timeSpan !== prevProps.timeSpan) {
       this.setState({duration: (84.01 * Year) / this.props.timeSpan});
     }
