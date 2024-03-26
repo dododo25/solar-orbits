@@ -3,28 +3,10 @@
   src: url('./fonts/RobotoMono-ExtraLight.ttf');
   font-weight: 200;
 }
+
 @font-face {
   font-family: RobotoMono;
   src: url('./fonts/RobotoMono-Light.ttf');
-  font-weight: 400;
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.font-extralight {
-  font-family: 'RobotoMono', sans-serif;
-  font-weight: 200;
-}
-
-.font-light {
-  font-family: 'RobotoMono', sans-serif;
   font-weight: 400;
 }
 
@@ -33,33 +15,60 @@ code {
     monospace;
 }
 
-.w-0 {
-  width: 0;
+* {
+  font-family: 'RobotoMono', sans-serif;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.collapse {
+  visibility: collapse;
+}
+
+.min-w-100 {
+  min-width: 100%;
+}
+
+.min-h-100 {
+  min-height: 100%;
+}
+
+.font-extralight {
+  font-weight: 200;
+}
+
+.font-light {
+  font-weight: 400;
+}
+
+.font-extrasmall {
+  font-size: 0.72em;
+}
+
+@media only screen and (max-width: 1024px) {
+  .font-extrasmall {
+    font-size: 0.64em;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .font-extrasmall {
+    font-size: 0.56em;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .font-extrasmall {
+    font-size: 0.42em;
+  }
 }
 
 @media print {
   .no-print {
      visibility: hidden;
   }
-}
-
-/* width */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #101010;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #EEEEEE;
-  border-radius: 2px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #FAFAFA;
 }

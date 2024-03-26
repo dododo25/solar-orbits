@@ -6,7 +6,7 @@ import './index.css';
 import App from './App.js';
 import reportWebVitals from './reportWebVitals.js';
 
-const shifts = {
+const angles = {
   europa: 166.52066136319684,
   saturn: 335.5347517649627,
   triton: 159.00028922964236,
@@ -28,7 +28,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    <App shifts={shifts} />
+    <App angles={angles} />
   </React.StrictMode>
 );
 
