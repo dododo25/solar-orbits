@@ -36,3 +36,27 @@ body {
 .font-extrasmall {
   font-size: 0.72em;
 }
+
+@media only screen and (max-width: 1024px) {
+  .font-extrasmall {
+    font-size: 0.64em;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .font-extrasmall {
+    font-size: 0.56em;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .font-extrasmall {
+    font-size: 0.42em;
+  }
+}
+
+@media print {
+  .no-print {
+     visibility: hidden;
+  }
+}
