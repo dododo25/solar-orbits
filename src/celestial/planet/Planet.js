@@ -13,11 +13,11 @@ class Planet extends React.Component {
         </g>
         <g transform={`rotate(${angle * -1})`}>
           <g transform={`translate(${orbitRadius}, 0)`}>
-            {this.props.children}
-            <g className='planet'>
-              <g transform={`rotate(${angle})`}>
-                {this.view}
-              </g>
+            <g className='moons'>
+              {this.props.children}
+            </g>
+            <g transform={`rotate(${angle})`}>
+              {this.view}
             </g>
           </g>
         </g>

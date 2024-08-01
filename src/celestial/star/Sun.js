@@ -1,7 +1,9 @@
 const Sun = props => {
   return (
     <g id={props.id}>
-      {props.children}
+      <g className='planets'>
+        {props.children}
+      </g>
       <g className='star'>
         <circle r='80' fill='#FBC02D' />
       </g>
