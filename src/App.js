@@ -32,7 +32,7 @@ class App extends React.Component {
 
     const onWindowResize = () => {
       this.setState({scale: 
-        Math.max(0.5, Math.min(1.2, Math.min(window.innerWidth, window.innerHeight) / Math.min(rect.width, rect.height) - 0.01))
+        Math.max(0.5, Math.min(1.2, Math.min(window.innerWidth, window.innerHeight) / Math.min(rect.width, rect.height) + 0.2))
       });
     }
 
