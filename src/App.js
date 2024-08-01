@@ -13,6 +13,9 @@ class App extends React.Component {
             <SolarSystem />
           </div>
         </div>
+        <div className='position-fixed vw-100 vh-100 p-2 d-flex justify-content-center align-items-end pe-none user-select-none'>
+          <span className='font-extralight font-extrasmall no-print text-white'>Sizes and distances are not to scale. Created by <a className='pe-auto' href='https://github.com/dododo25'>Dmytro Terekhov</a>, 2023.</span>
+        </div>
       </div>
     );
   }
