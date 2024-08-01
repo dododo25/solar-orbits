@@ -1,14 +1,14 @@
 import Planet from './Planet';
 
-class Moon extends Planet {
+class Io extends Planet {
 
   constructor(props) {
     super(props);
 
     this.view = (
-      <circle className='content' r='4' fill='#BDBDBD' />
+      <circle className='content' r='4' fill='#FFF176' />
     );
   }
 }
 
-export default Moon;
+export default Io;

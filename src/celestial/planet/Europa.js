@@ -1,6 +1,6 @@
 import Planet from './Planet';
 
-class Moon extends Planet {
+class Europa extends Planet {
 
   constructor(props) {
     super(props);
@@ -11,4 +11,4 @@ class Moon extends Planet {
   }
 }
 
-export default Moon;
+export default Europa;

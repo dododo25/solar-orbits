@@ -5,7 +5,7 @@ const Sun = props => {
         {props.children}
       </g>
       <g className='star'>
-        <circle r='80' fill='#FBC02D' />
+        <circle r='72' fill='#FBC02D' />
       </g>
     </g>
   );

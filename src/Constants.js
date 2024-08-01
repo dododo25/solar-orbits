@@ -1,4 +1,4 @@
-const Day = 0.1;
+const Day = 1;
 const Month = 27.3 * Day;
 const Year = 365.2425 * Day;
 

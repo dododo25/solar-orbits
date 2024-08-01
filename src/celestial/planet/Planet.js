@@ -3,7 +3,15 @@ import React from 'react';
 class Planet extends React.Component {
 
   render() {
-    const orbitRadius = this.props.orbitRadius * 1;
+    let orbitRadius = this.props.orbitRadius * 1;
+
+    let period = this.props.period * 1;
+    let oppositeMultiplier = 1;
+
+    if (period < 0) {
+      period = Math.abs(period);
+      oppositeMultiplier = -1;
+    }
 
     return (
       <g id={this.props.id}>
@@ -19,8 +27,8 @@ class Planet extends React.Component {
                 attributeType='XML'
                 type='rotate'
                 from='0'
-                to='360'
-                dur={`${this.duration}s`}
+                to={360 * oppositeMultiplier}
+                dur={`${period}s`}
                 repeatCount='indefinite' />
             </g>
             <g>
@@ -32,8 +40,8 @@ class Planet extends React.Component {
             attributeType='XML'
             type='rotate'
             from='0'
-            to='-360'
-            dur={`${this.duration}s`}
+            to={-360 * oppositeMultiplier}
+            dur={`${period}s`}
             repeatCount='indefinite' />
         </g>
       </g>
